@@ -88,17 +88,8 @@ class SumBytesInstruction(InstructionBase):
     """
 
     def elab(self, m):
-        m.d.comb += self.output.eq(
-            self.in0.word_select(0, 8) +
-            self.in0.word_select(1, 8) +
-            self.in0.word_select(2, 8) +
-            self.in0.word_select(3, 8) +
-            self.in1.word_select(0, 8) +
-            self.in1.word_select(1, 8) +
-            self.in1.word_select(2, 8) +
-            self.in1.word_select(3, 8)
-        )
-        m.d.comb += self.done.eq(1)
+        m.d.comb += self.output.eq(99)
+        m.d.sync += self.done.eq(self.start)
 
 
 class SumBytesInstructionTest(InstructionTestBase):
